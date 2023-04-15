@@ -3,11 +3,11 @@ let total = 0;
 
 function bienvenida(){
     let nombre = prompt("Ingrese su nombre o razon social")
-    if(nombre != "" && nombre != null){
+    if(nombre != "" && nombre != null && isNaN(nombre)){
         alert(`Bienvenido ${nombre} a BARSEL, siga las instrucciones para comprar`);
         return catalogo();
     }else{
-        alert("el nombre no es valido por favor vuelva a intentar");
+        alert("El nombre no es valido por favor vuelva a intentar");
        return bienvenida();
     }
 }
