@@ -1,0 +1,60 @@
+@use 'variables';
+/*DEKSTOP*/
+.container__footer {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+}
+.copyright_size {
+	font-size: variables.$font_size_footer;
+}
+.liFoo {
+	font-size: variables.$font_size_footer;
+	list-style: none;
+	padding: 0;
+}
+.ulFoo {
+	padding: 0;
+}
+.redes {
+	padding: 10px 10px;
+}
+.face {
+	color: variables.$font_color;;
+}
+.ins {
+	color: variables.$font_color;
+}
+
+
+/*MOBILE*/
+
+.container__footer {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+}
+.copyright_size {
+	font-size: 10px;
+}
+.liFoo {
+	font-size: 10px;
+	list-style: none;
+	padding: 0;
+}
+.ulFoo {
+	padding: 0;
+}
+.redes {
+	padding: 10px 10px;
+}
+.face {
+	color: variables.$font_color;
+}
+.ins {
+	color: variables.$font_color;
+}

@@ -1,0 +1,46 @@
+@use 'variables';
+
+/*DESKTOP*/
+.container-fluid {
+	background: variables.$background_hea_foo;
+	padding: 0;
+}
+#logo {
+	height: 100px;
+}
+.navbar-expand-lg {
+	--bs-navbar-padding-y: 0rem;
+	--bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.nav-link,
+.navbar-brand,
+.navbar-toggler,
+.narbar {
+	color: variables.$font_color;
+	margin-right: 10px;
+	&:hover{
+		color:  variables.$header_font;
+	}
+}
+
+/*MOBILE*/
+@media screen and (max-width: 480px) {
+.container-fluid {
+	background: variables.$background_hea_foo;
+	padding: 0;
+}
+#logo {
+	height: 100px;
+}
+.navbar-expand-lg {
+	--bs-navbar-padding-y: 0rem;
+	--bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.nav-link,
+.navbar-brand,
+.navbar-toggler,
+.narbar {
+	color: variables.$font_color;
+	margin-right: 10px;
+}
+}
