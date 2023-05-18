@@ -5,6 +5,7 @@
 	color: black;
 	font-size: 30px;
 	font-weight: 500;
+	max-width: 100%;
 }
 .btn-outline-success {
 	--bs-btn-color: #00a4e6;
@@ -47,6 +48,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	max-width: 100%;
 }
 .btn {
 	color: variables.$background_hea_foo;
@@ -54,6 +56,20 @@
 }
 .card__img {
 	height: 70%;
+}
+
+.btn-carro{
+	margin-left: 30%;
+	margin-top: 5%;
+}
+
+.btn-agregar{
+	margin-left: 30%;
+	margin-right: 30%;
+}
+
+.main{
+	max-width: 100%;
 }
 
 
