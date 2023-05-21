@@ -326,6 +326,10 @@ footer {
   background-color: #fff;
 }
 
+.disabled {
+  visibility: hidden;
+}
+
 /*MOBILE ESCRUCTURA */
 @media screen and (max-width: 480px) {
   #grid_container {
