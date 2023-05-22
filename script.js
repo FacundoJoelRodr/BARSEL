@@ -1,10 +1,9 @@
 const productos = [
-  { id: 1, producto: "Placa de video", precio: 100000, cantidad: 1, categoria: "compu" },
-  { id: 2, producto: "RAM", precio: 20000, cantidad: 1, categoria: "note" },
-  { id: 3, producto: "Motherboard", precio: 40000, cantidad: 1, categoria: "note" },
-  { id: 4, producto: "Procesador", precio: 80000, cantidad: 1, categoria: "compu" },
-  { id: 3, producto: "Motherboard", precio: 40000, cantidad: 1, categoria: "compu" },
-  { id: 4, producto: "Procesador", precio: 80000, cantidad: 1, categoria: "compu" }
+  { id: 1, producto: "Placa de video", precio: 100000, cantidad: 1, img: "./img/PlacaDeVideo.jpg" },
+  { id: 2, producto: "RAM", precio: 20000, cantidad: 1, img: "./img/RAM.webp"  },
+  { id: 3, producto: "Motherboard", precio: 40000, cantidad: 1,img: "./img/motherboard.png"  },
+  { id: 4, producto: "Procesador", precio: 80000, cantidad: 1, img: "./img/amd-ryzen-7-5700x.jpg "  },
+
 ];
 
 let carrito = [];
@@ -15,11 +14,12 @@ const openModal = document.querySelector(".hero__cta");
 const modal = document.querySelector(".modal");
 const closeModal = document.querySelector(".modal__close");
 const borrarModal = document.querySelector(".modal__borrar");
+const comprarModal = document.querySelector(".modal__comprar");
 const modalContainer = document.getElementById("modal__container");
 let agregarCarrito = document.querySelectorAll(".agregar-carrito");
 const items = document.querySelector("#items");
 const searchInput = document.querySelector('#search-input');
-const vacio = document.querySelector('.vacio');
+const vacio = document.querySelector('#vacio');
 
 
 ////SE MUESTRA LOS PRODUCTOS
@@ -30,11 +30,11 @@ function verProductos(productos) {
     const contenedor = document.createElement("div");
     contenedor.className = "card";
     contenedor.innerHTML = `
-      <img class="card__img" src="" alt="Avatar" />
+      <img class="card__img" src="${producto.img}" alt="Avatar" />
       <div class="container">
-        <h4><b>${producto.producto}</b></h4>  
-        <p>${producto.precio}</p>
-        <button class="agregar-carrito" id="${producto.id}">Agregar Carrito</button>
+        <h4><b> ${producto.producto}</b></h4>  
+        <p> PRECIO: $ ${producto.precio}</p>
+        <button class="agregar-carrito btn btn-outline-success" id="${producto.id}">Agregar Carrito</button>
       </div>
     `;
 
@@ -89,6 +89,13 @@ borrarModal.addEventListener("click", () => {
   vacio.classList.remove("disabled");
 });
 
+comprarModal.addEventListener("click", () => {
+
+  modal.classList.remove("modal--show");
+});
+
+
+
 //// MODAL
 
 function a() {
@@ -101,12 +108,11 @@ function a() {
     const div = document.createElement("div");
     div.classList.add("items-carrito");
     div.innerHTML = `
-      <img class="card__img" src="" alt="Avatar">
       <div class="container">
         <h4><b>${producto.producto}</b></h4>  
-        <p>${producto.precio * producto.cantidad}</p>
-        <p>${producto.cantidad}</p>
-        <button class="eliminar-carrito" data-id="${producto.id}">Eliminar Producto</button>
+        <p>Precio: $ ${producto.precio * producto.cantidad}</p>
+        <p>Cantidad:${producto.cantidad}</p>
+        <button class="eliminar-carrito btn btn-outline-danger " data-id="${producto.id}">Eliminar Producto</button>
       </div>
     `;
     items.append(div);

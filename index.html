@@ -56,11 +56,8 @@
                       type="search"
                       placeholder="Buscar"
                       aria-label="Search"
-                      id="search-input" 
+                      id="search-input"
                     />
-                    <button class="btn btn-outline-success" id="search" type="submit">
-                      Buscar
-                    </button>
                   </form>
                 </div>
               </nav>
@@ -70,7 +67,7 @@
         <button class="hero__cta">abrir modal</button>
         <section class="modal ">
           <div class="modal__container" id="modal__container">
-            <p id ="vacio">carrito Vacio</p>
+            <p id ="vacio" class="disabled">carrito Vacio</p>
             <div id="items">
 
 
@@ -79,7 +76,7 @@
            <div id ="botones"class="botones">
               <a href="#" class="modal__close">Cerrar Carrito</a>
               <a href="#" class="modal__borrar">borrar Carrito</a>
-              <a href="#" class="modal__comprar">borrar Carrito</a>
+              <a href="#" class="modal__comprar">Terminar Compra</a>
             </div> 
           </div>
         </section>
@@ -126,6 +123,8 @@
     </script>
 
     <script src="script.js"></script>
-  
+    <script src="carrito.js"></script>
+
+
   </body>
 </html>
