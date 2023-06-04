@@ -10,6 +10,8 @@
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="./css/styles.css" />
     <title>Document</title>
   </head>
@@ -17,7 +19,7 @@
     <header>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid col-12 col-sm-12">
-          <a class="navbar-brand disabled me-auto"
+          <a class="navbar-brand me-auto"
             ><img
               id="logo"
               src="./img/depositphotos_126043686-stock-illustration-computer-service-icon-modified.png"
@@ -37,6 +39,9 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
+              <a class="carrito_img cart hero__cta" ><i class="fas fa-shopping-cart"></i><img src="./img/shoppingcart_77968.png" id="carrito_img"alt="">
+                <span id="carrito-num" data-action="cart-can" class="badge rounded-circle"></span>
+              </a>
             </ul>
           </div>
         </div>
@@ -64,10 +69,9 @@
             </div>
           </article>
         </section>
-        <button class="hero__cta">abrir modal</button>
-        <section class="modal ">
+        <section class="modal">
           <div class="modal__container" id="modal__container">
-            <p id ="vacio" class="disabled">carrito Vacio</p>
+            <p id ="vacio" class="">carrito Vacio</p>
             <div id="items">
 
 
@@ -121,9 +125,10 @@
     <script>
       feather.replace();
     </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="script.js"></script>
-   
+
 
 
   </body>

@@ -23,11 +23,14 @@ header {
 main {
 	grid-area: main;
 	display: grid;
-	grid-template-rows: 1fr, 1fr, 1fr, 1fr;
+	grid-template-rows: 1fr, 1fr, 1fr;
+  overflow: hidden;
+  
 }
 footer {
 	grid-area: footer;
 	width: 100%;
+  margin-top: 21vh;
 	display: flex;
 	background-color: variables.$background_hea_foo;
 	color: variables.$font_color;
@@ -113,6 +116,39 @@ footer {
   visibility: hidden;
 }
 
+#carrito_img{
+  width: 10%;
+  margin-left: 80%; 
+}
+.carrito{
+	visibility: hidden;
+}
+
+#carrito-num {
+  position: absolute;
+  top: 0;
+  left: 90%;
+  background: red;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 2px;
+  text-decoration: none;
+  
+}
+.cart {
+  position: relative;
+  text-decoration: none;
+}
+
+.agregar-carrito{
+  margin-top: 10%;
+margin-left: 25%;
+}
 /*MOBILE ESCRUCTURA */
 @media screen and (max-width: 480px) {
 #grid_container {
@@ -141,5 +177,27 @@ footer {
 
 .carrito{
 	visibility: hidden;
+}
+
+#cart_menu_num {
+  position: absolute;
+  top: 0;
+  left: 80%;
+  background: red;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  font-size: larger;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 2px;
+  text-decoration: none;
+  
+}
+.cart {
+  position: relative;
+  text-decoration: none;
 }
 }
