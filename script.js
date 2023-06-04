@@ -1,14 +1,13 @@
 let productos = [];
 
 fetch("./productos.json")
-.then(response => response.json())
-.then(data =>{
-  productos = data;
-  verProductos(productos);
-})
+  .then(response => response.json())
+  .then(data => {
+    productos = data;
+    verProductos(productos);
+  });
+
 let carrito = [];
-
-
 const cards = document.querySelector(".grupo-cards");
 const openModal = document.querySelector(".hero__cta");
 const modal = document.querySelector(".modal");
@@ -18,14 +17,14 @@ const comprarModal = document.querySelector(".modal__comprar");
 const modalContainer = document.getElementById("modal__container");
 let agregarCarrito = document.querySelectorAll(".agregar-carrito");
 const items = document.querySelector("#items");
-const searchInput = document.querySelector('#search-input');
-const vacio = document.querySelector('#vacio');
-const carritoNum = document.querySelector('#carrito-num');
-
+const searchInput = document.querySelector("#search-input");
+const vacio = document.querySelector("#vacio");
+const carritoNum = document.querySelector("#carrito-num");
 
 ////SE MUESTRA LOS PRODUCTOS
 function verProductos(productos) {
-  cards.innerHTML = ""; 
+  cards.innerHTML = "";
+  carritoNum.innerHTML = localStorage.getItem("carritoCantidad") || 0;
 
   productos.forEach(producto => {
     const contenedor = document.createElement("div");
@@ -43,12 +42,9 @@ function verProductos(productos) {
   });
 
   agregar();
-  
-  carritoNum.innerHTML = 0;
 }
 
 ////SE AGREGA AL CARRITO
-
 function agregar() {
   agregarCarrito = document.querySelectorAll(".agregar-carrito");
 
@@ -58,23 +54,26 @@ function agregar() {
 }
 
 function Acarrito(e) {
-
-  Toastify({
-    text: "Se agrego correctamente en el carrito",
-    offset: {
-      x: 50, 
-      y: 50 
-    },
-    style:{
-      background:"#f26250",
-      borderRadius:"1.5rem"
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 1000,
+    timerProgressBar: true,
+    didOpen: toast => {
+      toast.addEventListener("mouseenter", Swal.stopTimer);
+      toast.addEventListener("mouseleave", Swal.resumeTimer);
     }
-  }).showToast();
+  });
 
-  
+  Toast.fire({
+    icon: "success",
+    title: "Se agregó correctamente",
+    iconColor: "#f26250"
+  });
+
   const idB = e.currentTarget.id;
-  let elementoCarrito = productos.find(a => a.id === Number(idB));
-
+  const elementoCarrito = productos.find(a => a.id === Number(idB));
   const index = carrito.findIndex(elem => elem.id === Number(idB));
 
   if (index !== -1) {
@@ -87,13 +86,13 @@ function Acarrito(e) {
 
   const datosCarrito = JSON.stringify(carrito);
   localStorage.setItem("carrito", datosCarrito);
-  agregarContador()
+  agregarContador();
 }
 
-function agregarContador(){
-  let contador = carrito.reduce((acc, pro)=> acc +pro.cantidad,0);
-  
-    carritoNum.innerHTML = contador;
+function agregarContador() {
+  const contador = carrito.reduce((acc, pro) => acc + pro.cantidad, 0);
+  carritoNum.innerHTML = contador;
+  localStorage.setItem("carritoCantidad", contador);
 }
 
 ////// MODAL BOTONES
@@ -109,15 +108,16 @@ closeModal.addEventListener("click", () => {
 
 borrarModal.addEventListener("click", () => {
   Swal.fire({
-    title: '¿Estas seguro de borrar el carrito?',
-    icon: 'warning',
+    title: "¿Estás seguro de borrar el carrito?",
+    icon: "warning",
     showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Si',
-    cancelButtonText:'cancelar',
-    iconColor:'#f26250'
-  }).then((result) => {
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si",
+    confirmButtonColor: "#f26250",
+    cancelButtonText: "Cancelar",
+    iconColor: "#f26250"
+  }).then(result => {
     if (result.isConfirmed) {
       items.innerHTML = "";
       carritoNum.innerHTML = 0;
@@ -125,60 +125,56 @@ borrarModal.addEventListener("click", () => {
       localStorage.clear();
       vacio.classList.remove("disabled");
     }
-  })  
+  });
 });
-function contador() {
-  let total = carrito.reduce((acc, producto) => {
-    let subtotal = producto.precio * producto.cantidad;
-    return acc + subtotal;
-  }, 0);
-  
-  return total;
-}
+
 comprarModal.addEventListener("click", () => {
-  let total = carrito.reduce((acc, producto) => {
-    let subtotal = producto.precio * producto.cantidad;
+  const total = carrito.reduce((acc, producto) => {
+    const subtotal = producto.precio * producto.cantidad;
     return acc + subtotal;
   }, 0);
+
   Swal.fire({
-    title: 'Muchas Gracias por su compra',
-    icon: 'success',
-    text: `el total de su compra fue $ ${total}`,
-    confirmButtonColor:'#f26250',
+    title: "Muchas Gracias por su compra",
+    icon: "success",
+    text: `El total de su compra fue $ ${total}`,
+    confirmButtonColor: "#f26250",
     showClass: {
-      popup: 'animate__animated animate__fadeInDown'
+      popup: "animate__animated animate__fadeInDown"
     },
     hideClass: {
-      popup: 'animate__animated animate__fadeOutUp'
+      popup: "animate__animated animate__fadeOutUp"
     }
-  })
-  
+  });
+
   modal.classList.remove("modal--show");
   items.innerHTML = "";
-      carritoNum.innerHTML = 0;
-      carrito = [];
-      localStorage.clear();
-      vacio.classList.remove("disabled");
+  carritoNum.innerHTML = 0;
+  carrito = [];
+  localStorage.clear();
+  vacio.classList.remove("disabled");
 });
 
-
-
 //// MODAL
-
 function a() {
   const carritoModalls = localStorage.getItem("carrito");
-  const values = JSON.parse(carritoModalls);
 
-  items.innerHTML = ''; 
+  if (carritoModalls) {
+    carrito = JSON.parse(carritoModalls);
+    agregarContador();
+  }
 
-  values.forEach(producto => {
+  items.innerHTML = "";
+
+  carrito.forEach(producto => {
     const div = document.createElement("div");
     div.classList.add("items-carrito");
     div.innerHTML = `
       <div class="container">
         <h4><b>${producto.producto}</b> </h4>  
-        <p>Precio: $ ${producto.precio * producto.cantidad} Cantidad:${producto.cantidad} <a class="eliminar-carrito" data-id="${producto.id}"><img src="./img/trash-2.svg"></img></a></p>
-
+        <p>Precio: $ ${producto.precio * producto.cantidad} Cantidad: ${
+      producto.cantidad
+    } <a class="eliminar-carrito" data-id="${producto.id}"><img src="./img/trash-2.svg"></img></a></p>
       </div>
     `;
     items.append(div);
@@ -187,30 +183,33 @@ function a() {
   eliminar();
 }
 
-
 function eliminar() {
   const eliminarCarrito = document.querySelectorAll(".eliminar-carrito");
 
   eliminarCarrito.forEach(e => {
-    
     e.addEventListener("click", Ecarrito);
-    
   });
 }
 
 function Ecarrito(e) {
-
-  Toastify({
-    text: "Se elimino producto",
-    offset: {
-      x: 50, 
-      y: 50 
-    },
-    style:{
-      background:"#FE2E2E",
-      borderRadius:"1.5rem"
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 1000,
+    timerProgressBar: true,
+    didOpen: toast => {
+      toast.addEventListener("mouseenter", Swal.stopTimer);
+      toast.addEventListener("mouseleave", Swal.resumeTimer);
     }
-  }).showToast();
+  });
+
+  Toast.fire({
+    icon: "success",
+    title: "Se eliminó el producto",
+    iconColor: "#FE2E2E"
+  });
+
   const idE = e.currentTarget.dataset.id;
 
   if (carrito.some(f => f.id === Number(idE))) {
@@ -231,11 +230,10 @@ function Ecarrito(e) {
     }
   }
 
-
   const datosCarrito = JSON.stringify(carrito);
   localStorage.setItem("carrito", datosCarrito);
-  
-  a();
+
+  agregarContador();
 }
 
 ////SEARCH
@@ -249,4 +247,4 @@ function filtrarProductos() {
   verProductos(productosFiltrados);
 }
 
-searchInput.addEventListener('input', filtrarProductos);
+searchInput.addEventListener("input", filtrarProductos);
