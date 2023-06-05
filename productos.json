@@ -1,14 +1,14 @@
 [
-    { "id": 1, "producto": "Coca-Cola", "precio": 500, "cantidad": 1, "img": "./img/cocaIndividual.png" },
-    { "id": 2, "producto": "Coca-Cola Pack 6", "precio": 3000, "cantidad": 1, "img": "./img/packCoca.jpg"  },
+    { "id": 1, "producto": "Coca-Cola", "precio": 500, "cantidad": 1, "img": "./img/cocaIndividual.webp" },
+    { "id": 2, "producto": "Coca-Cola Pack 6", "precio": 3000, "cantidad": 1, "img": "./img/cocaPack.webp"  },
     { "id": 3, "producto": "BonAqua", "precio": 400, "cantidad": 1,"img": "./img/bonAquaIndividuall.jpg"  },
     { "id": 4, "producto": "BonAqua Pack 6", "precio": 2400, "cantidad": 1,"img": "./img/packAgua.webp"  },
-    { "id": 5, "producto": "Sprite", "precio": 450, "cantidad": 1,"img": "./img/SpriteIndividual.png"  },
+    { "id": 5, "producto": "Sprite", "precio": 450, "cantidad": 1,"img": "./img/spriteIndividual.jpg"  },
     { "id": 6, "producto": "Sprite Pack 6", "precio": 2700, "cantidad": 1,"img": "./img/packSprite.webp"  },
     { "id": 7, "producto": "Cepita", "precio": 350, "cantidad": 1,"img": "./img/cepitaIndividual.png"  },
     { "id": 8, "producto": "Cepita Pack 6", "precio": 2100, "cantidad": 1,"img": "./img/packCepita.webp"  },
-    { "id": 9, "producto": "Cepita", "precio": 350, "cantidad": 1,"img": "./img/ag"  },
-    { "id": 10, "producto": "Cepita Pack 6", "precio": 2100, "cantidad": 1,"img": "./img/cocaIndividual.png"  },
-    { "id": 11, "producto": "Fernet Branca", "precio": 2700, "cantidad": 1,"img": "./img/FernetIndividual.png"  },
+    { "id": 9, "producto": "Patagonia", "precio": 650, "cantidad": 1,"img": "./img/patagonia.jpg "  },
+    { "id": 10, "producto": "Patagonia Pack 6", "precio": 3900, "cantidad": 1,"img": "./img/patagoniaPack.webp"  },
+    { "id": 11, "producto": "Fernet Branca", "precio": 2700, "cantidad": 1,"img": "./img/fernetIndividual.webp"  },
     { "id": 12, "producto": "Fernet Branca Pack 6", "precio": 16200, "cantidad": 1,"img": "./img/PackFernet.jpg"}
   ]
